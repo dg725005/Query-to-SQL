@@ -1,18 +1,18 @@
 import openai
-import dotenv
+#import dotenv
 import pandas as pd
 import sqlite3
 import streamlit as st
 
-dotenv.load_dotenv()
+#dotenv.load_dotenv()
 
-client = openai.OpenAI()
+client = openai.OpenAI(api_key="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")
 OPENAI_MODEL = "gpt-3.5-turbo"
 
 # Function to return the database file as a string
 def load_sql_file_to_string(filepath):
     try:
-        with open(filepath, 'r', encoding='latin-1') as file: # latin-1'
+        with open(filepath, 'r', encoding='latin-1') as file: # latin-1
             sql_content = file.read()
         return sql_content
 
@@ -21,8 +21,7 @@ def load_sql_file_to_string(filepath):
         return None
 
 # Let's create an SQL Generation Function
-def generate_sql_query(user_query, db_schema):
-    
+def generate_sql_query(user_query, db_schema):    
     # Generates a SQL query from a natural language query using OpenAI's API.
     try:
         # Construct the system message. This sets the role and behavior of the AI.
@@ -37,7 +36,7 @@ def generate_sql_query(user_query, db_schema):
                 "Your task is to generate the correct SQL query for the user's question. "
                 "Only return the SQL query, without any additional text or explanations."
                 "Do not include ```sql or any other markdown formatting."
-            ),
+            )
         }
 
         # Construct the user message. This contains the actual question from the user.
