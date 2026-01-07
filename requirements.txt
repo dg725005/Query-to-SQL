@@ -2,3 +2,5 @@ openai
 dotenv
 pandas
 sqlite3
+streamlit
+
