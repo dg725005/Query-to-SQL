@@ -1,12 +1,12 @@
 import openai
-#import dotenv
+
 import pandas as pd
 import sqlite3
 import streamlit as st
 
-#dotenv.load_dotenv()
+client = openai.OpenAI()
+openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-client = openai.OpenAI(api_key="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")
 OPENAI_MODEL = "gpt-3.5-turbo"
 
 # Function to return the database file as a string
